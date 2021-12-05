@@ -13,6 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::group(['namespace' => 'App\Http\Controllers'], function ()
+{
+    Route::get('/', 'StartController@index');
+    Route::get('orders', 'StartController@orders');
+    Route::get('shoppingcart', 'StartController@cart');
+    Route::get('product', 'StartController@product');
+
+}
+);
+
