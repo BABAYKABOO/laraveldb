@@ -17,7 +17,7 @@
     <hr class="tm-hr-primary">
     <br/>
     <div style="text-align: center;">
-        <img src="../../img/about-01.jpg" alt="Image" width="800" >
+        <img src="{{URL('/img/about-01.jpg')}}" alt="Image" width="800" >
     </div>
     <br/>
     <br/>

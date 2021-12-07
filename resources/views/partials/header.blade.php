@@ -32,11 +32,20 @@
                     Cart
                 </a></li>
 
-                <li class="tm-nav-item">
-                    <a href="" class="tm-nav-link">
-                        <i class="fas fa-pen"></i>
-                        Exit
-                    </a></li>
+                @auth('web')
+                    <li class="tm-nav-item">
+                        <a href="{{route('logout')}}" class="tm-nav-link">
+                            <i class="fas fa-pen"></i>
+                            Log out
+                        </a></li>
+                @endauth
+                @guest('web')
+                    <li class="tm-nav-item">
+                        <a href="{{route('login')}}" class="tm-nav-link">
+                            <i class="fas fa-pen"></i>
+                            Login
+                        </a></li>
+                @endguest
             </ul>
         </nav>
         <div class="tm-mb-65">

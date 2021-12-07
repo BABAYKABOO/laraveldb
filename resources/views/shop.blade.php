@@ -14,9 +14,15 @@
         <div class="d-flex justify-content-between">
             <span></span>
             <span>{{$product->product_price}}</span>
-            <a href="shop/{{$product->product_id}}" style="color: #3c3c3c">
-                <button type="button" class="btn btn-warning">Buy</button>
-            </a>
+            @if(auth('web')->check()== true)
+                <a href="{{route('product', $product->product_id)}}" style="color: #3c3c3c">
+                    <button type="button" class="btn btn-warning">Buy</button>
+                </a>
+            @else
+                <a href="{{route('login')}}" style="color: #3c3c3c">
+                    <button type="button" class="btn btn-secondary">Login</button>
+                </a>
+            @endif
         </div>
     </div>
 @endforeach
