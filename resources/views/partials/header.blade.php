@@ -27,7 +27,7 @@
                 <script type="text/javascript">
                     document.title === 'Cart' ? document.write('<li class="tm-nav-item active">') : document.write('<li class="tm-nav-item">');
                 </script>
-                <a href="" class="tm-nav-link">
+                <a href="{{ route('cart') }}" class="tm-nav-link">
                     <i class="fas fa-pen"></i>
                     Cart
                 </a></li>
