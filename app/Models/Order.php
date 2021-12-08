@@ -12,7 +12,8 @@ class Order extends Model
     public $timestamps = false;
 
     protected $fillable = [
-
+        'order_id',
+        'user_id'
     ];
 
     public function cart()

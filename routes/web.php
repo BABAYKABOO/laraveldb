@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Route;
 
     Route::get('/', [App\Http\Controllers\IndexController::class, 'index'])->name('home');
     Route::get('shop', [App\Http\Controllers\ShopController::class, 'index'])->name('shop');
-    Route::get('/shop/{id}', [App\Http\Controllers\ProductController::class, 'index'])->name('product');
+    Route::get('/shop/{id}', [App\Http\Controllers\ProductController::class, 'buy'])->name('product');
 
 
     Route::middleware("auth")->group(function (){

@@ -12,6 +12,9 @@ class Shoppingcart extends Model
     public $timestamps = false;
 
     protected $fillable = [
+        'order_id',
+        'user_id',
+        'product_id',
         'count'
     ];
 

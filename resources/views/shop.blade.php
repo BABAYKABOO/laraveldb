@@ -15,7 +15,7 @@
             <span></span>
             <span>{{$product->product_price}}</span>
             @if(auth('web')->check()== true)
-                <a href="{{route('product', $product->product_id)}}" style="color: #3c3c3c">
+                <a href="{{ route('product', $product->product_id) }}" style="color: #3c3c3c">
                     <button type="button" class="btn btn-warning">Buy</button>
                 </a>
             @else
