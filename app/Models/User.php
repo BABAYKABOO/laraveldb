@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
 
 class User extends Authenticatable
 {
@@ -24,4 +25,31 @@ class User extends Authenticatable
         'user_password'
 
     ];
+
+    public function loginUser(Request $request) : bool
+    {
+        $data = $request->validate([
+            "user_name" => ['required', 'string'],
+            "password" => ['required']
+        ]);
+        if(auth('web')->attempt($data))
+            return true;
+
+
+        return false;
+    }
+
+    public function registerUser(Request $request) : User
+    {
+        $data = $request->validate([
+            "name" => ['required', 'string', 'unique'],
+            "password" => ['required', 'confirmed']
+        ]);
+
+        return User::create([
+            "user_name" => $data['name'],
+            "user_password" => bcrypt($data['password']),
+        ]);
+
+    }
 }

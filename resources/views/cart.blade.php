@@ -7,7 +7,7 @@
     <? $sum = 0?>
     @foreach($cart as $row)
         <div style="height: 250px; width: 100%; margin: 0px 50px 100px 0px">
-            <h2>Product: {{$products[$row->product_id]->product_name}}</h2>
+            <h2>Product: {{$products[$row->product_id-1]->product_name}}</h2>
             <p>Count: {{$row->count}}</p>
             <p>Price: {{$products[$row->product_id]->price}}</p><br/>
             <form method="post">

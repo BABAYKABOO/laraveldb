@@ -20,8 +20,10 @@ class Order extends Model
     static public function order_id()
     {
         $user_id = Auth::user()->user_id;
+
         $order_id = Order::select()->where('user_id', $user_id)->get();
-        if (isset($order_id[0]->order_id))
+
+        if (!isset($order_id[0]->order_id))
         {
             Order::create([
                 "user_id" => $user_id
@@ -29,6 +31,18 @@ class Order extends Model
             $order_id = Order::select()->where('user_id', $user_id)->get();
         }
         return $order_id[0]->order_id;
+    }
+
+    public function getOrder()
+    {
+        $order_id = Order::order_id();
+        $cart = Shoppingcart::select()->where('order_id', $order_id)->get();
+        $products = Product::get();
+
+        return [
+            'products' => $products,
+            'cart' => $cart
+        ];
     }
 
     public function cart()

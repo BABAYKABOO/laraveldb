@@ -6,22 +6,20 @@ use App\Models\Order;
 use App\Models\Product;
 use App\Models\Shoppingcart;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
 {
-    public function index()
+    private Shoppingcart $model;
+    public function __construct()
     {
-        if (auth('web')->check() == 0)
-            return view("auth.login");
+        $this->model = new Shoppingcart();
+    }
+    public function buy(int $id)
+    {
+        $this->model->buy($id);
 
-        $order_id = Order::order_id();
-        $cart = Shoppingcart::select()->where('order_id', $order_id)->get();
-        $products = Product::get();
-        return view('cart', [
-            'products' => $products,
-            'cart' => $cart
+        return redirect(route("shop"));
 
-        ]);
     }
 }
