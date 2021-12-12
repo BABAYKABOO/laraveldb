@@ -1,5 +1,5 @@
 @extends('layout.app')
-@section('title', 'Shop')
+@section('title', 'Cart')
 @section('content')
     <h1>Cart</h1>
     <h3 style="width: 1000px">All your goods</h3>

@@ -17,4 +17,15 @@ class Product extends Model
         'price'
     ];
 
+    public function scopeHasProduct($query, array $id)
+    {
+        for ($i = 0; $i < count($id); $i++)
+        {
+            if (empty($query->where('product_id', $id[$i])))
+            {
+                return $query->where('product_id', $id[$i]);
+            }
+        }
+        return null;
+    }
 }

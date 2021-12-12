@@ -45,4 +45,16 @@ class Shoppingcart extends Model
     {
         $this->hasMany(Order::class);
     }
+
+    public function scopeHasProduct($query)
+    {
+        if (empty($query->whereNull('product_id')))
+        {
+            $products = $query->select('product_id');
+            $products = $products->assoc();
+            if (Product::HasProduct($products))
+                return null;
+        }
+        return $query->whereNull('product_id');
+    }
 }

@@ -22,7 +22,7 @@ class User extends Authenticatable
     protected $fillable = [
         'user_id',
         'user_name',
-        'user_password'
+        'password'
 
     ];
 
@@ -42,13 +42,12 @@ class User extends Authenticatable
     public function registerUser(Request $request) : User
     {
         $data = $request->validate([
-            "name" => ['required', 'string', 'unique'],
+            "name" => ['required', 'string'],
             "password" => ['required', 'confirmed']
         ]);
-
         return User::create([
             "user_name" => $data['name'],
-            "user_password" => bcrypt($data['password']),
+            "password" => bcrypt($data['password']),
         ]);
 
     }

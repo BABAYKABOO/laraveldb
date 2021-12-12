@@ -14,6 +14,8 @@ class ShoppingcartFactory extends Factory
     public function definition()
     {
         return [
+            'order_id' => rand(1, 10),
+            'product_id' => rand(1, 10),
             'count' => $this->faker->randomDigit()
         ];
     }

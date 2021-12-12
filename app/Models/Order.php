@@ -53,4 +53,9 @@ class Order extends Model
     {
         $this->hasMany(User::class);
     }
+
+    public function scopeHasUser($query)
+    {
+        return $query->whereNull('user_id');
+    }
 }

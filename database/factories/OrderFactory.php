@@ -14,7 +14,7 @@ class OrderFactory extends Factory
     public function definition()
     {
         return [
-            'user_id' => ''
+            'user_id' => rand(1, 10)
         ];
     }
 }
